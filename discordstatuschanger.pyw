@@ -7,7 +7,7 @@ import PySimpleGUI as sg
 
 sg.theme('DarkAmber')
 
-filePath = os.path.dirname(__file__) + "\\savedStatus.txt"
+filePath = os.path.dirname(__file__) + "/savedStatus.txt"
 print(filePath)
 
 try:
@@ -30,7 +30,6 @@ try:
             lines2 = (line.strip())
             print(lines2)
             Text2 = lines2
-
     f = open(filePath, "r")
     line_numbers3 = [2]
     lines3 = ""
@@ -40,7 +39,6 @@ try:
             lines3 = (line.strip())
             print(lines3)
             Text3 = lines3
-
     f = open(filePath, "r")
     line_numbers4 = [3]
     lines4 = ""
@@ -50,7 +48,6 @@ try:
             lines4 = (line.strip())
             print(lines4)
             Text4 = lines4
-
     f = open(filePath, "r")
     line_numbers5 = [4]
     lines5 = ""
@@ -60,7 +57,6 @@ try:
             lines5 = (line.strip())
             print(lines5)
             Text5 = lines5
-
     f = open(filePath, "r")
     line_numbers6 = [5]
     lines6 = ""
@@ -70,8 +66,6 @@ try:
             lines6 = (line.strip())
             print(lines6)
             Text6 = lines6
-    while False:
-        break
 except: 
     f = open(filePath, "w")
     f.write("\n\n\n\n\n")
@@ -95,7 +89,6 @@ except:
                 lines2 = (line.strip())
                 print(lines2)
                 Text2 = lines2
-
         f = open(filePath, "r")
         line_numbers3 = [2]
         lines3 = ""
@@ -105,7 +98,6 @@ except:
                 lines3 = (line.strip())
                 print(lines3)
                 Text3 = lines3
-
         f = open(filePath, "r")
         line_numbers4 = [3]
         lines4 = ""
@@ -115,7 +107,6 @@ except:
                 lines4 = (line.strip())
                 print(lines4)
                 Text4 = lines4
-
         f = open(filePath, "r")
         line_numbers5 = [4]
         lines5 = ""
@@ -125,7 +116,6 @@ except:
                 lines5 = (line.strip())
                 print(lines5)
                 Text5 = lines5
-
         f = open(filePath, "r")
         line_numbers6 = [5]
         lines6 = ""
@@ -135,9 +125,7 @@ except:
                 lines6 = (line.strip())
                 print(lines6)
                 Text6 = lines6
-
     except: sg.popup("Failed to open")
-    
 
 def main():
     column_to_be_centered = [
@@ -168,8 +156,12 @@ def main():
     window['-EXPAND2-'].expand(True, False, True)
 
     start = int(time.time())
-    rpc = status(928615823352942634)
-    rpc.connect()
+    try:
+        rpc = status(928615823352942634)
+        rpc.connect()
+    except: 
+        sg.popup("Discord is not running!\n\nClosing program!")
+        window.close()
 
 
     while True:             # Event Loop
@@ -181,17 +173,17 @@ def main():
         if event == 'Ändra Status':
             try:
                 rpc.update(
-                state=values[0],
-                details=values[1],
-                large_image="main",
-                buttons = [{"label": values[2], "url": values[3]}, {"label": values[4], "url": values[5]}],
-                start = start
-                )
+                    state=values[0],
+                    details=values[1],
+                    large_image="main",
+                    buttons = [{"label": values[2], "url": values[3]}, {"label": values[4], "url": values[5]}],
+                    start = start
+                    )
             except: sg.popup("Ogiltig Status")
         if event == 'Spara':
             if values[0] != "":
                 if values[1] != "":
-                    if values[2] != "":
+                    if values[2] != "": 
                         if values[3] != "":
                             if values[4] != "":
                                 if values[5] != "":
@@ -201,7 +193,6 @@ def main():
                                                             values[2] + '\n' +
                                                             values[3] + '\n' +
                                                             values[4] + '\n' +
-                                                            values[5])      
-
+                                                            values[5])
 if __name__ == '__main__':
     main()
