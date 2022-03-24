@@ -3,8 +3,6 @@ import time
 from pypresence import Presence as status
 import PySimpleGUI as sg
 
-    
-
 sg.theme('DarkAmber')
 
 filePath = os.path.dirname(__file__) + "/savedStatus.txt"
