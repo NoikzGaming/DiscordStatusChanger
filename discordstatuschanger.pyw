@@ -149,13 +149,13 @@ def main():
                 [sg.InputText(Text1)],
                 [sg.Text('Text 2 ex: "Click on the button!"')],
                 [sg.InputText(Text2)],
-                [sg.Text('Button 1 Text')],
+                [sg.Text('Button 1 Text (Optional)')],
                 [sg.InputText(Text3)],
-                [sg.Text('Button 1 Link')],
+                [sg.Text('Button 1 Link (Optional)')],
                 [sg.InputText(Text4)],
-                [sg.Text('Button 2 Text')],
+                [sg.Text('Button 2 Text (Optional)')],
                 [sg.InputText(Text5)],
-                [sg.Text('Button 2 Link')],
+                [sg.Text('Button 2 Link (Optional)')],
                 [sg.InputText(Text6)],
                 [sg.Text(size=(12,1), key='-OUT-')],
                 [sg.Button('Change Status'),
@@ -173,7 +173,6 @@ def main():
 
     start = int(time.time())
     try:
-        sg.popup('Connecting to Discord\n\nPlease wait a few seconds while its connecting!')
         rpc = status(928615823352942634)
         rpc.connect()
     except: 
