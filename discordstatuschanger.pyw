@@ -6,6 +6,8 @@ import PySimpleGUI as sg
 
 debugMode = False
 
+version = "1.0.3"
+
 sg.theme('DarkAmber')
 
 filePath = os.path.dirname(__file__) + "/savedStatus.txt"
@@ -166,14 +168,13 @@ def main():
               [sg.Text('', pad=(0,0),key='-EXPAND2-'),              # the thing that expands from left
                sg.Column(column_to_be_centered, vertical_alignment='center', justification='center',  k='-C-')]]
 
-    window = sg.Window('Custom Status Changer', layout, resizable=True,finalize=True)
+    window = sg.Window('Custom Status', layout, resizable=True,finalize=True)
     window['-C-'].expand(True, True, True)
     window['-EXPAND-'].expand(True, True, True)
     window['-EXPAND2-'].expand(True, False, True)
 
     start = int(time.time())
     try:
-        sg.popup('Connecting to Discord\n\nPlease wait a few seconds while its connecting!')
         rpc = status(928615823352942634)
         rpc.connect()
     except: 
